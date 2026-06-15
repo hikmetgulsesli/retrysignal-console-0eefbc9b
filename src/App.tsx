@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import {
   EmptyAndErrorRecoveryRetrysignalConsole,
   FeedbackOperationsRetrysignalConsole,
@@ -6,7 +6,12 @@ import {
   SettingsAndPreferencesRetrysignalConsole,
   FeedbackEditorRetrysignalConsole,
 } from './screens';
-import { useRetrySignalStore, retrySignalActions } from './features/retrysignal-console/retrysignal-console.store';
+import {
+  useRetrySignalStore,
+  retrySignalActions,
+  startRuntimeLoop,
+  stopRuntimeLoop,
+} from './features/retrysignal-console/retrysignal-console.store';
 import type { RetrySignalScreenId } from './__fixtures__/retrysignal-console.fixture';
 
 const screenComponents = {
@@ -101,7 +106,28 @@ function createActions<T extends string>(
 ): Partial<Record<T, () => void>> {
   const actions = {} as Partial<Record<T, () => void>>;
 
+  const handledIds = new Set<string>([
+    'feedback-operations-1',
+    'pipeline-board-2',
+    'settings-3',
+    'create-request-3',
+    'create-new-request-4',
+    'new-4',
+    'edit-5',
+    'edit-7',
+    'edit-9',
+    'close-editor-1',
+    'cancel-2',
+    'save-changes-3',
+    'close-12',
+    'reset-defaults-12',
+  ]);
+
   for (const id of ids) {
+    if (!handledIds.has(id)) {
+      continue;
+    }
+
     actions[id] = () => {
       const actionId = id as string;
       switch (actionId) {
@@ -131,8 +157,6 @@ function createActions<T extends string>(
         case 'reset-defaults-12':
           reset();
           break;
-        default:
-          break;
       }
     };
   }
@@ -142,6 +166,13 @@ function createActions<T extends string>(
 
 export default function App() {
   const { state } = useRetrySignalStore();
+
+  useEffect(() => {
+    startRuntimeLoop();
+    return () => {
+      stopRuntimeLoop();
+    };
+  }, []);
 
   const navigate = useCallback((screenId: RetrySignalScreenId) => {
     retrySignalActions.navigate(screenId);

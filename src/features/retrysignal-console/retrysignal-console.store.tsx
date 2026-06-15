@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 import { loadState, saveState } from './retrysignal-console.repo';
 import { initialAppState, type RetrySignalScreenId } from '../../__fixtures__/retrysignal-console.fixture';
 
@@ -65,8 +65,10 @@ function createStore(): Store {
 export const retrySignalStore = createStore();
 
 export function useRetrySignalStore() {
-  const [state, setState] = useState(retrySignalStore.state);
-  useEffect(() => retrySignalStore.subscribe(() => setState(retrySignalStore.state)), []);
+  const state = useSyncExternalStore(
+    retrySignalStore.subscribe,
+    () => retrySignalStore.state,
+  );
   return { state, dispatch: retrySignalStore.dispatch };
 }
 
@@ -91,10 +93,6 @@ export function stopRuntimeLoop(): void {
     clearInterval(runtimeLoopHandle);
     runtimeLoopHandle = null;
   }
-}
-
-if (typeof window !== 'undefined') {
-  startRuntimeLoop();
 }
 
 (globalThis as Record<string, unknown>).app = {
