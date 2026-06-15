@@ -106,59 +106,38 @@ function createActions<T extends string>(
 ): Partial<Record<T, () => void>> {
   const actions = {} as Partial<Record<T, () => void>>;
 
-  const handledIds = new Set<string>([
-    'feedback-operations-1',
-    'pipeline-board-2',
-    'settings-3',
-    'create-request-3',
-    'create-new-request-4',
-    'new-4',
-    'edit-5',
-    'edit-7',
-    'edit-9',
-    'close-editor-1',
-    'cancel-2',
-    'save-changes-3',
-    'close-12',
-    'reset-defaults-12',
-  ]);
-
   for (const id of ids) {
-    if (!handledIds.has(id)) {
-      continue;
+    const actionId = id as string;
+    switch (actionId) {
+      case 'feedback-operations-1':
+        actions[id] = () => navigate('feedbackOperations');
+        break;
+      case 'pipeline-board-2':
+        actions[id] = () => navigate('pipelineBoard');
+        break;
+      case 'settings-3':
+        actions[id] = () => navigate('settings');
+        break;
+      case 'create-request-3':
+      case 'create-new-request-4':
+      case 'new-4':
+      case 'edit-5':
+      case 'edit-7':
+      case 'edit-9':
+        actions[id] = () => navigate('editor');
+        break;
+      case 'close-editor-1':
+      case 'cancel-2':
+      case 'save-changes-3':
+      case 'close-12':
+        actions[id] = () => navigate('feedbackOperations');
+        break;
+      case 'reset-defaults-12':
+        actions[id] = () => reset();
+        break;
+      default:
+        break;
     }
-
-    actions[id] = () => {
-      const actionId = id as string;
-      switch (actionId) {
-        case 'feedback-operations-1':
-          navigate('feedbackOperations');
-          break;
-        case 'pipeline-board-2':
-          navigate('pipelineBoard');
-          break;
-        case 'settings-3':
-          navigate('settings');
-          break;
-        case 'create-request-3':
-        case 'create-new-request-4':
-        case 'new-4':
-        case 'edit-5':
-        case 'edit-7':
-        case 'edit-9':
-          navigate('editor');
-          break;
-        case 'close-editor-1':
-        case 'cancel-2':
-        case 'save-changes-3':
-        case 'close-12':
-          navigate('feedbackOperations');
-          break;
-        case 'reset-defaults-12':
-          reset();
-          break;
-      }
-    };
   }
 
   return actions;
