@@ -1,0 +1,983 @@
+[
+  {
+    "screenId": "1fd5636a316c461490bce5895cefb491",
+    "screenTitle": "Feedback Editor - RetrySignal Console",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Close Editor",
+        "line": 115
+      },
+      {
+        "type": "button",
+        "label": "Cancel",
+        "line": 124
+      },
+      {
+        "type": "button",
+        "label": "Changes",
+        "line": 127
+      },
+      {
+        "type": "input",
+        "label": "e.g., Latency Spike on Protocol Sequence",
+        "inputType": "text",
+        "placeholder": "e.g., Latency Spike on Protocol Sequence",
+        "line": 152
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 167
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 182
+      },
+      {
+        "type": "input",
+        "label": "Provide raw logs or deterministic sequence of events...",
+        "inputType": "textarea",
+        "placeholder": "Provide raw logs or deterministic sequence of events...",
+        "line": 198
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 213
+      },
+      {
+        "type": "form",
+        "label": "form",
+        "line": 137
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Close Editor",
+        "line": 115
+      },
+      {
+        "type": "button",
+        "label": "Cancel",
+        "line": 124
+      },
+      {
+        "type": "button",
+        "label": "Changes",
+        "line": 127
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "e.g., Latency Spike on Protocol Sequence",
+        "inputType": "text",
+        "placeholder": "e.g., Latency Spike on Protocol Sequence",
+        "line": 152
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 167
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 182
+      },
+      {
+        "type": "input",
+        "label": "Provide raw logs or deterministic sequence of events...",
+        "inputType": "textarea",
+        "placeholder": "Provide raw logs or deterministic sequence of events...",
+        "line": 198
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 213
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 9,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "611a5866be7145bea863a2a50897f015",
+    "screenTitle": "Pipeline Board - RetrySignal Console",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Feedback Operations",
+        "href": "#",
+        "line": 174
+      },
+      {
+        "type": "link",
+        "label": "Pipeline Board",
+        "href": "#",
+        "line": 180
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 186
+      },
+      {
+        "type": "link",
+        "label": "help",
+        "href": "#",
+        "line": 195
+      },
+      {
+        "type": "link",
+        "label": "logout",
+        "href": "#",
+        "line": 201
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 226
+      },
+      {
+        "type": "button",
+        "label": "history",
+        "line": 229
+      },
+      {
+        "type": "button",
+        "label": "Create Request",
+        "line": 233
+      },
+      {
+        "type": "button",
+        "label": "more_horiz",
+        "line": 253
+      },
+      {
+        "type": "button",
+        "label": "more_horiz",
+        "line": 301
+      },
+      {
+        "type": "button",
+        "label": "Update",
+        "line": 324
+      },
+      {
+        "type": "button",
+        "label": "more_horiz",
+        "line": 340
+      },
+      {
+        "type": "button",
+        "label": "Review",
+        "line": 363
+      },
+      {
+        "type": "button",
+        "label": "more_horiz",
+        "line": 379
+      },
+      {
+        "type": "button",
+        "label": "Close",
+        "line": 398
+      },
+      {
+        "type": "input",
+        "label": "Search pipelines...",
+        "inputType": "text",
+        "placeholder": "Search pipelines...",
+        "line": 223
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Feedback Operations",
+        "href": "#",
+        "line": 174
+      },
+      {
+        "type": "link",
+        "label": "Pipeline Board",
+        "href": "#",
+        "line": 180
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 186
+      },
+      {
+        "type": "link",
+        "label": "help",
+        "href": "#",
+        "line": 195
+      },
+      {
+        "type": "link",
+        "label": "logout",
+        "href": "#",
+        "line": 201
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 226
+      },
+      {
+        "type": "button",
+        "label": "history",
+        "line": 229
+      },
+      {
+        "type": "button",
+        "label": "Create Request",
+        "line": 233
+      },
+      {
+        "type": "button",
+        "label": "more_horiz",
+        "line": 253
+      },
+      {
+        "type": "button",
+        "label": "more_horiz",
+        "line": 301
+      },
+      {
+        "type": "button",
+        "label": "Update",
+        "line": 324
+      },
+      {
+        "type": "button",
+        "label": "more_horiz",
+        "line": 340
+      },
+      {
+        "type": "button",
+        "label": "Review",
+        "line": 363
+      },
+      {
+        "type": "button",
+        "label": "more_horiz",
+        "line": 379
+      },
+      {
+        "type": "button",
+        "label": "Close",
+        "line": 398
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search pipelines...",
+        "inputType": "text",
+        "placeholder": "Search pipelines...",
+        "line": 223
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 16,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "c7866f395ded4498b4e9a3ea5fd5414f",
+    "screenTitle": "Settings and Preferences - RetrySignal Console",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Feedback Operations",
+        "href": "#",
+        "line": 131
+      },
+      {
+        "type": "link",
+        "label": "Pipeline Board",
+        "href": "#",
+        "line": 135
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 139
+      },
+      {
+        "type": "link",
+        "label": "help",
+        "href": "#",
+        "line": 146
+      },
+      {
+        "type": "link",
+        "label": "logout",
+        "href": "#",
+        "line": 150
+      },
+      {
+        "type": "button",
+        "label": "history",
+        "line": 172
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 175
+      },
+      {
+        "type": "button",
+        "label": "Create Request",
+        "line": 179
+      },
+      {
+        "type": "button",
+        "label": "New",
+        "line": 256
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 273
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 274
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 281
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 282
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 289
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 290
+      },
+      {
+        "type": "button",
+        "label": "Preferences",
+        "line": 345
+      },
+      {
+        "type": "button",
+        "label": "Reset Defaults",
+        "line": 349
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 210
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 217
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 232
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 239
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 313
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 325
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 337
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Feedback Operations",
+        "href": "#",
+        "line": 131
+      },
+      {
+        "type": "link",
+        "label": "Pipeline Board",
+        "href": "#",
+        "line": 135
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 139
+      },
+      {
+        "type": "link",
+        "label": "help",
+        "href": "#",
+        "line": 146
+      },
+      {
+        "type": "link",
+        "label": "logout",
+        "href": "#",
+        "line": 150
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "history",
+        "line": 172
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 175
+      },
+      {
+        "type": "button",
+        "label": "Create Request",
+        "line": 179
+      },
+      {
+        "type": "button",
+        "label": "New",
+        "line": 256
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 273
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 274
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 281
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 282
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 289
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 290
+      },
+      {
+        "type": "button",
+        "label": "Preferences",
+        "line": 345
+      },
+      {
+        "type": "button",
+        "label": "Reset Defaults",
+        "line": 349
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 210
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 217
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 232
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 239
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 313
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 325
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 337
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 24,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "241c3c71799444208f56a4208a10fe23",
+    "screenTitle": "Feedback Operations - RetrySignal Console",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Feedback Operations",
+        "href": "#",
+        "line": 138
+      },
+      {
+        "type": "link",
+        "label": "Pipeline Board",
+        "href": "#",
+        "line": 143
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 147
+      },
+      {
+        "type": "link",
+        "label": "help",
+        "href": "#",
+        "line": 154
+      },
+      {
+        "type": "link",
+        "label": "logout",
+        "href": "#",
+        "line": 158
+      },
+      {
+        "type": "button",
+        "label": "Notifications",
+        "line": 182
+      },
+      {
+        "type": "button",
+        "label": "History",
+        "line": 185
+      },
+      {
+        "type": "button",
+        "label": "Create Request",
+        "line": 190
+      },
+      {
+        "type": "button",
+        "label": "Status: All",
+        "line": 239
+      },
+      {
+        "type": "button",
+        "label": "Last 24h",
+        "line": 242
+      },
+      {
+        "type": "button",
+        "label": "Export CSV",
+        "line": 245
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 280
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 300
+      },
+      {
+        "type": "button",
+        "label": "Retry",
+        "line": 320
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 340
+      },
+      {
+        "type": "button",
+        "label": "visibility",
+        "line": 359
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 382
+      },
+      {
+        "type": "button",
+        "label": "copy",
+        "line": 414
+      },
+      {
+        "type": "button",
+        "label": "Cancel Task",
+        "line": 438
+      },
+      {
+        "type": "button",
+        "label": "Retry Load",
+        "line": 441
+      },
+      {
+        "type": "input",
+        "label": "Search ID, Title, or Owner...",
+        "inputType": "text",
+        "placeholder": "Search ID, Title, or Owner...",
+        "line": 235
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Feedback Operations",
+        "href": "#",
+        "line": 138
+      },
+      {
+        "type": "link",
+        "label": "Pipeline Board",
+        "href": "#",
+        "line": 143
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 147
+      },
+      {
+        "type": "link",
+        "label": "help",
+        "href": "#",
+        "line": 154
+      },
+      {
+        "type": "link",
+        "label": "logout",
+        "href": "#",
+        "line": 158
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Notifications",
+        "line": 182
+      },
+      {
+        "type": "button",
+        "label": "History",
+        "line": 185
+      },
+      {
+        "type": "button",
+        "label": "Create Request",
+        "line": 190
+      },
+      {
+        "type": "button",
+        "label": "Status: All",
+        "line": 239
+      },
+      {
+        "type": "button",
+        "label": "Last 24h",
+        "line": 242
+      },
+      {
+        "type": "button",
+        "label": "Export CSV",
+        "line": 245
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 280
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 300
+      },
+      {
+        "type": "button",
+        "label": "Retry",
+        "line": 320
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 340
+      },
+      {
+        "type": "button",
+        "label": "visibility",
+        "line": 359
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 382
+      },
+      {
+        "type": "button",
+        "label": "copy",
+        "line": 414
+      },
+      {
+        "type": "button",
+        "label": "Cancel Task",
+        "line": 438
+      },
+      {
+        "type": "button",
+        "label": "Retry Load",
+        "line": 441
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search ID, Title, or Owner...",
+        "inputType": "text",
+        "placeholder": "Search ID, Title, or Owner...",
+        "line": 235
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 21,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "40bd1e59272b4163bb94ebe7578c33e0",
+    "screenTitle": "Empty and Error Recovery - RetrySignal Console",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Feedback Operations",
+        "href": "#",
+        "line": 185
+      },
+      {
+        "type": "link",
+        "label": "Pipeline Board",
+        "href": "#",
+        "line": 191
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 197
+      },
+      {
+        "type": "link",
+        "label": "help",
+        "href": "#",
+        "line": 211
+      },
+      {
+        "type": "link",
+        "label": "logout",
+        "href": "#",
+        "line": 217
+      },
+      {
+        "type": "link",
+        "label": "System Health Dashboard",
+        "href": "#",
+        "line": 314
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 245
+      },
+      {
+        "type": "button",
+        "label": "history",
+        "line": 248
+      },
+      {
+        "type": "button",
+        "label": "Create Request",
+        "line": 251
+      },
+      {
+        "type": "button",
+        "label": "Create New Request",
+        "line": 294
+      },
+      {
+        "type": "button",
+        "label": "Retry Load",
+        "line": 297
+      },
+      {
+        "type": "input",
+        "label": "Search resources...",
+        "inputType": "text",
+        "placeholder": "Search resources...",
+        "line": 243
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Feedback Operations",
+        "href": "#",
+        "line": 185
+      },
+      {
+        "type": "link",
+        "label": "Pipeline Board",
+        "href": "#",
+        "line": 191
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 197
+      },
+      {
+        "type": "link",
+        "label": "help",
+        "href": "#",
+        "line": 211
+      },
+      {
+        "type": "link",
+        "label": "logout",
+        "href": "#",
+        "line": 217
+      },
+      {
+        "type": "link",
+        "label": "System Health Dashboard",
+        "href": "#",
+        "line": 314
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 245
+      },
+      {
+        "type": "button",
+        "label": "history",
+        "line": 248
+      },
+      {
+        "type": "button",
+        "label": "Create Request",
+        "line": 251
+      },
+      {
+        "type": "button",
+        "label": "Create New Request",
+        "line": 294
+      },
+      {
+        "type": "button",
+        "label": "Retry Load",
+        "line": 297
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search resources...",
+        "inputType": "text",
+        "placeholder": "Search resources...",
+        "line": 243
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 12,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
