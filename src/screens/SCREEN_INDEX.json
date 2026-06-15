@@ -1,0 +1,474 @@
+[
+  {
+    "screenId": "1fd5636a316c461490bce5895cefb491",
+    "title": "Feedback Editor - RetrySignal Console",
+    "componentName": "FeedbackEditorRetrysignalConsole",
+    "file": "src/screens/FeedbackEditorRetrysignalConsole.tsx",
+    "buttons": 3,
+    "inputs": 2,
+    "links": 0,
+    "actions": [
+      {
+        "id": "close-editor-1",
+        "kind": "button",
+        "label": "Close Editor",
+        "index": 0
+      },
+      {
+        "id": "cancel-2",
+        "kind": "button",
+        "label": "Cancel",
+        "index": 1
+      },
+      {
+        "id": "save-changes-3",
+        "kind": "button",
+        "label": "Save Changes",
+        "index": 2
+      }
+    ]
+  },
+  {
+    "screenId": "611a5866be7145bea863a2a50897f015",
+    "title": "Pipeline Board - RetrySignal Console",
+    "componentName": "PipelineBoardRetrysignalConsole",
+    "file": "src/screens/PipelineBoardRetrysignalConsole.tsx",
+    "buttons": 10,
+    "inputs": 1,
+    "links": 5,
+    "actions": [
+      {
+        "id": "notifications-1",
+        "kind": "button",
+        "label": "Notifications",
+        "index": 0
+      },
+      {
+        "id": "history-2",
+        "kind": "button",
+        "label": "History",
+        "index": 1
+      },
+      {
+        "id": "create-request-3",
+        "kind": "button",
+        "label": "Create Request",
+        "index": 2
+      },
+      {
+        "id": "more-horiz-4",
+        "kind": "button",
+        "label": "More Horiz",
+        "index": 3
+      },
+      {
+        "id": "more-horiz-5",
+        "kind": "button",
+        "label": "More Horiz",
+        "index": 4
+      },
+      {
+        "id": "update-6",
+        "kind": "button",
+        "label": "Update",
+        "index": 5
+      },
+      {
+        "id": "more-horiz-7",
+        "kind": "button",
+        "label": "More Horiz",
+        "index": 6
+      },
+      {
+        "id": "review-8",
+        "kind": "button",
+        "label": "Review",
+        "index": 7
+      },
+      {
+        "id": "more-horiz-9",
+        "kind": "button",
+        "label": "More Horiz",
+        "index": 8
+      },
+      {
+        "id": "close-10",
+        "kind": "button",
+        "label": "Close",
+        "index": 9
+      },
+      {
+        "id": "feedback-operations-1",
+        "kind": "link",
+        "label": "Feedback Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "pipeline-board-2",
+        "kind": "link",
+        "label": "Pipeline Board",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "settings-3",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "help-4",
+        "kind": "link",
+        "label": "Help",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "logout-5",
+        "kind": "link",
+        "label": "Logout",
+        "href": "#",
+        "index": 4
+      }
+    ]
+  },
+  {
+    "screenId": "c7866f395ded4498b4e9a3ea5fd5414f",
+    "title": "Settings and Preferences - RetrySignal Console",
+    "componentName": "SettingsAndPreferencesRetrysignalConsole",
+    "file": "src/screens/SettingsAndPreferencesRetrysignalConsole.tsx",
+    "buttons": 12,
+    "inputs": 7,
+    "links": 5,
+    "actions": [
+      {
+        "id": "history-1",
+        "kind": "button",
+        "label": "History",
+        "index": 0
+      },
+      {
+        "id": "notifications-2",
+        "kind": "button",
+        "label": "Notifications",
+        "index": 1
+      },
+      {
+        "id": "create-request-3",
+        "kind": "button",
+        "label": "Create Request",
+        "index": 2
+      },
+      {
+        "id": "new-4",
+        "kind": "button",
+        "label": "New",
+        "index": 3
+      },
+      {
+        "id": "edit-5",
+        "kind": "button",
+        "label": "Edit",
+        "index": 4
+      },
+      {
+        "id": "delete-6",
+        "kind": "button",
+        "label": "Delete",
+        "index": 5
+      },
+      {
+        "id": "edit-7",
+        "kind": "button",
+        "label": "Edit",
+        "index": 6
+      },
+      {
+        "id": "delete-8",
+        "kind": "button",
+        "label": "Delete",
+        "index": 7
+      },
+      {
+        "id": "edit-9",
+        "kind": "button",
+        "label": "Edit",
+        "index": 8
+      },
+      {
+        "id": "delete-10",
+        "kind": "button",
+        "label": "Delete",
+        "index": 9
+      },
+      {
+        "id": "save-preferences-11",
+        "kind": "button",
+        "label": "Save Preferences",
+        "index": 10
+      },
+      {
+        "id": "reset-defaults-12",
+        "kind": "button",
+        "label": "Reset Defaults",
+        "index": 11
+      },
+      {
+        "id": "feedback-operations-1",
+        "kind": "link",
+        "label": "Feedback Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "pipeline-board-2",
+        "kind": "link",
+        "label": "Pipeline Board",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "settings-3",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "help-4",
+        "kind": "link",
+        "label": "Help",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "logout-5",
+        "kind": "link",
+        "label": "Logout",
+        "href": "#",
+        "index": 4
+      }
+    ]
+  },
+  {
+    "screenId": "241c3c71799444208f56a4208a10fe23",
+    "title": "Feedback Operations - RetrySignal Console",
+    "componentName": "FeedbackOperationsRetrysignalConsole",
+    "file": "src/screens/FeedbackOperationsRetrysignalConsole.tsx",
+    "buttons": 15,
+    "inputs": 1,
+    "links": 5,
+    "actions": [
+      {
+        "id": "notifications-1",
+        "kind": "button",
+        "label": "Notifications",
+        "index": 0
+      },
+      {
+        "id": "history-2",
+        "kind": "button",
+        "label": "History",
+        "index": 1
+      },
+      {
+        "id": "create-request-3",
+        "kind": "button",
+        "label": "Create Request",
+        "index": 2
+      },
+      {
+        "id": "status-all-4",
+        "kind": "button",
+        "label": "Status: All",
+        "index": 3
+      },
+      {
+        "id": "last-24h-5",
+        "kind": "button",
+        "label": "Last 24h",
+        "index": 4
+      },
+      {
+        "id": "export-csv-6",
+        "kind": "button",
+        "label": "Export CSV",
+        "index": 5
+      },
+      {
+        "id": "edit-7",
+        "kind": "button",
+        "label": "Edit",
+        "index": 6
+      },
+      {
+        "id": "edit-8",
+        "kind": "button",
+        "label": "Edit",
+        "index": 7
+      },
+      {
+        "id": "retry-9",
+        "kind": "button",
+        "label": "Retry",
+        "index": 8
+      },
+      {
+        "id": "edit-10",
+        "kind": "button",
+        "label": "Edit",
+        "index": 9
+      },
+      {
+        "id": "visibility-11",
+        "kind": "button",
+        "label": "Visibility",
+        "index": 10
+      },
+      {
+        "id": "close-12",
+        "kind": "button",
+        "label": "Close",
+        "index": 11
+      },
+      {
+        "id": "copy-13",
+        "kind": "button",
+        "label": "copy",
+        "index": 12
+      },
+      {
+        "id": "cancel-task-14",
+        "kind": "button",
+        "label": "Cancel Task",
+        "index": 13
+      },
+      {
+        "id": "retry-load-15",
+        "kind": "button",
+        "label": "Retry Load",
+        "index": 14
+      },
+      {
+        "id": "feedback-operations-1",
+        "kind": "link",
+        "label": "Feedback Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "pipeline-board-2",
+        "kind": "link",
+        "label": "Pipeline Board",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "settings-3",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "help-4",
+        "kind": "link",
+        "label": "Help",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "logout-5",
+        "kind": "link",
+        "label": "Logout",
+        "href": "#",
+        "index": 4
+      }
+    ]
+  },
+  {
+    "screenId": "40bd1e59272b4163bb94ebe7578c33e0",
+    "title": "Empty and Error Recovery - RetrySignal Console",
+    "componentName": "EmptyAndErrorRecoveryRetrysignalConsole",
+    "file": "src/screens/EmptyAndErrorRecoveryRetrysignalConsole.tsx",
+    "buttons": 5,
+    "inputs": 1,
+    "links": 6,
+    "actions": [
+      {
+        "id": "notifications-1",
+        "kind": "button",
+        "label": "Notifications",
+        "index": 0
+      },
+      {
+        "id": "history-2",
+        "kind": "button",
+        "label": "History",
+        "index": 1
+      },
+      {
+        "id": "create-request-3",
+        "kind": "button",
+        "label": "Create Request",
+        "index": 2
+      },
+      {
+        "id": "create-new-request-4",
+        "kind": "button",
+        "label": "Create New Request",
+        "index": 3
+      },
+      {
+        "id": "retry-load-5",
+        "kind": "button",
+        "label": "Retry Load",
+        "index": 4
+      },
+      {
+        "id": "feedback-operations-1",
+        "kind": "link",
+        "label": "Feedback Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "pipeline-board-2",
+        "kind": "link",
+        "label": "Pipeline Board",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "settings-3",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "help-4",
+        "kind": "link",
+        "label": "Help",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "logout-5",
+        "kind": "link",
+        "label": "Logout",
+        "href": "#",
+        "index": 4
+      },
+      {
+        "id": "system-health-dashboard-6",
+        "kind": "link",
+        "label": "System Health Dashboard",
+        "href": "#",
+        "index": 5
+      }
+    ]
+  }
+]
