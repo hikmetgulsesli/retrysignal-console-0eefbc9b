@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings and Preferences - RetrySignal Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#001a42",
+                        "inverse-primary": "#005ac2",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-lowest": "#060e20",
+                        "outline": "#8c909f",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-secondary-container": "#00311f",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "error": "#ffb4ab",
+                        "on-background": "#dae2fd",
+                        "surface-variant": "#2d3449",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-bright": "#31394d",
+                        "surface-container-highest": "#2d3449",
+                        "secondary-container": "#00a572",
+                        "primary": "#adc6ff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-high": "#222a3d",
+                        "on-secondary-fixed": "#002113",
+                        "tertiary": "#ffb95f",
+                        "on-error": "#690005",
+                        "surface-container": "#171f33",
+                        "on-primary": "#002e6a",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "primary-container": "#4d8eff",
+                        "error-container": "#93000a",
+                        "outline-variant": "#424754",
+                        "inverse-surface": "#dae2fd",
+                        "on-primary-container": "#00285d",
+                        "surface-container-low": "#131b2e",
+                        "background": "#0b1326",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#dae2fd",
+                        "secondary": "#4edea3",
+                        "surface-tint": "#adc6ff",
+                        "tertiary-container": "#ca8100",
+                        "on-secondary": "#003824",
+                        "on-surface-variant": "#c2c6d6",
+                        "inverse-on-surface": "#283044",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface": "#0b1326",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-container": "#3e2400",
+                        "on-tertiary": "#472a00",
+                        "surface-dim": "#0b1326"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "row-height-standard": "40px",
+                        "row-height-dense": "32px",
+                        "container-padding": "16px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "body-xs": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "code": ["JetBrains Mono"],
+                        "display": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-xs": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "code": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "display": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "title-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for operations console feel */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0b1326; }
+        ::-webkit-scrollbar-thumb { background: #2d3449; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #424754; }
+        body { background-color: #0b1326; color: #dae2fd; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-sm antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen flex flex-col docked h-full w-64 left-0 border-r border-outline-variant border-r border-outline-variant bg-surface-container-low dark:bg-surface-container-lowest z-20">
+<!-- Header -->
+<div class="p-container-padding flex items-center gap-gutter border-b border-outline-variant">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="terminal">terminal</span>
+</div>
+<div>
+<h1 class="font-display text-display text-primary truncate">RetrySignal</h1>
+<p class="font-body-xs text-body-xs text-on-surface-variant">System Operator</p>
+</div>
+</div>
+<!-- System Status CTA -->
+<div class="p-container-padding border-b border-outline-variant">
+<div class="bg-surface-container-highest rounded p-2 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-label-caps text-label-caps text-secondary uppercase">System Health: Optimal</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto py-4 flex flex-col gap-1 px-2">
+<a class="flex items-center gap-gutter px-3 py-2 rounded text-on-surface-variant hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-title-md text-title-md">Feedback Operations</span>
+</a>
+<a class="flex items-center gap-gutter px-3 py-2 rounded text-on-surface-variant hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="alt_route">alt_route</span>
+<span class="font-title-md text-title-md">Pipeline Board</span>
+</a>
+<a class="flex items-center gap-gutter px-3 py-2 rounded text-primary font-bold border-r-2 border-primary bg-surface-container hover:bg-surface-variant transition-colors opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-title-md text-title-md">Settings</span>
+</a>
+</div>
+<!-- Footer -->
+<div class="mt-auto border-t border-outline-variant p-2 flex flex-col gap-1">
+<a class="flex items-center gap-gutter px-3 py-2 rounded text-on-surface-variant hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-sm text-body-sm">Help</span>
+</a>
+<a class="flex items-center gap-gutter px-3 py-2 rounded text-error hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-sm text-body-sm">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col ml-64 h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-container-padding h-row-height-standard bg-surface dark:bg-surface border-b border-outline-variant bg-surface shrink-0 z-10">
+<!-- Brand / Title -->
+<div class="flex items-center gap-gutter">
+<span class="font-headline text-headline text-primary font-bold">Settings &amp; Preferences</span>
+</div>
+<!-- Global Status & Actions -->
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-4 text-on-surface-variant font-code text-code">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span> Bridge Status: Online</span>
+<span>Latency: 24ms</span>
+</div>
+<div class="w-px h-4 bg-outline-variant hidden lg:block"></div>
+<div class="flex items-center gap-2">
+<button class="p-1 rounded text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</button>
+<button class="p-1 rounded text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full border border-surface"></span>
+</button>
+<button class="ml-2 h-row-height-dense px-3 bg-primary-container text-on-primary-container rounded flex items-center gap-1 hover:bg-primary transition-colors font-title-md text-title-md">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+                        Create Request
+                    </button>
+<img alt="Operator Avatar" class="w-8 h-8 rounded-full ml-2 border border-outline-variant cursor-pointer" data-alt="A small, circular avatar image showing the letters 'Op' in bold white text against a dark navy blue background. The style is clean, modern, and suitable for a technical console interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSDvaq1bU1JLWp7N3lY4Oel9lToM7Wl0bW4Kqzen5SeCzIm06yd0WyPE71zNllW8qPX8WPDPK1cTWU7SXwJtgXrAB_6wBNJtX6cGTJVMf4EeYQXto4_8pWUKH-NawIsbArtxsyShR78jRv4DJC7jPyu2bJGrfYZ5oApk8q81k3v02sLHc93tRQ7WuUdczZyOwrK_5HSb3NMCcOhGLakCUCxN4RB9GZLpODjW1z8uNQ5--WNVxASIeFb5HUtQB2wRzF4AwRnth5tJO6"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 overflow-y-auto p-container-padding bg-background">
+<div class="max-w-4xl mx-auto flex flex-col gap-6 pb-20">
+<!-- Page Header Description -->
+<div class="mb-2">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Configure local operator environment, default pipeline views, and alert thresholds for the current session.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Primary Settings -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Workflow Preferences -->
+<section class="bg-surface-container-low border border-outline-variant rounded p-4">
+<h2 class="font-title-md text-title-md text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+                                Workflow Preferences
+                            </h2>
+<div class="space-y-6">
+<!-- Density Control -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Display Density</label>
+<div class="flex items-center gap-4 bg-surface-container-highest p-1 rounded inline-flex border border-outline-variant">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="density" type="radio" value="compact"/>
+<div class="px-3 py-1 rounded text-on-surface-variant peer-checked:bg-surface peer-checked:text-primary peer-checked:border-outline-variant border border-transparent font-body-sm text-body-sm flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[16px]" data-icon="density_small">density_small</span>
+                                                Compact
+                                            </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="density" type="radio" value="standard"/>
+<div class="px-3 py-1 rounded text-on-surface-variant peer-checked:bg-surface peer-checked:text-primary peer-checked:border-outline-variant border border-transparent font-body-sm text-body-sm flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[16px]" data-icon="density_medium">density_medium</span>
+                                                Standard
+                                            </div>
+</label>
+</div>
+<p class="mt-1 font-body-xs text-body-xs text-outline">Compact density sets row heights to 32px. Standard uses 40px.</p>
+</div>
+<div class="w-full h-px bg-outline-variant/50"></div>
+<!-- Default View Control -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Default Pipeline View</label>
+<div class="flex items-center gap-4 bg-surface-container-highest p-1 rounded inline-flex border border-outline-variant">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="default_view" type="radio" value="table"/>
+<div class="px-3 py-1 rounded text-on-surface-variant peer-checked:bg-surface peer-checked:text-primary peer-checked:border-outline-variant border border-transparent font-body-sm text-body-sm flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[16px]" data-icon="table">table</span>
+                                                Data Table
+                                            </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="default_view" type="radio" value="board"/>
+<div class="px-3 py-1 rounded text-on-surface-variant peer-checked:bg-surface peer-checked:text-primary peer-checked:border-outline-variant border border-transparent font-body-sm text-body-sm flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[16px]" data-icon="view_kanban">view_kanban</span>
+                                                Kanban Board
+                                            </div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Saved Filters -->
+<section class="bg-surface-container-low border border-outline-variant rounded p-4">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-title-md text-title-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+                                    Saved Filters
+                                </h2>
+<button class="text-primary hover:text-primary-fixed transition-colors font-body-sm text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span> New
+                                </button>
+</div>
+<div class="border border-outline-variant rounded overflow-hidden">
+<!-- Filter Table Header -->
+<div class="grid grid-cols-12 gap-4 px-4 py-2 bg-surface-container-highest border-b border-outline-variant">
+<div class="col-span-4 font-label-caps text-label-caps text-on-surface-variant uppercase">Filter Name</div>
+<div class="col-span-6 font-label-caps text-label-caps text-on-surface-variant uppercase">Query</div>
+<div class="col-span-2 font-label-caps text-label-caps text-on-surface-variant uppercase text-right">Actions</div>
+</div>
+<!-- Filter Rows -->
+<div class="divide-y divide-outline-variant bg-surface">
+<div class="grid grid-cols-12 gap-4 px-4 py-2 items-center hover:bg-surface-container-highest transition-colors group">
+<div class="col-span-4 font-body-sm text-body-sm font-medium">Critical Latency Spikes</div>
+<div class="col-span-6 font-code text-code text-tertiary-fixed-dim truncate">latency &gt; 500ms AND status = 'error'</div>
+<div class="col-span-2 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[16px]" data-icon="edit">edit</span></button>
+<button class="text-on-surface-variant hover:text-error"><span class="material-symbols-outlined text-[16px]" data-icon="delete">delete</span></button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-4 px-4 py-2 items-center hover:bg-surface-container-highest transition-colors group">
+<div class="col-span-4 font-body-sm text-body-sm font-medium">Failed Authentication</div>
+<div class="col-span-6 font-code text-code text-tertiary-fixed-dim truncate">event_type = 'auth' AND result = 'failure'</div>
+<div class="col-span-2 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[16px]" data-icon="edit">edit</span></button>
+<button class="text-on-surface-variant hover:text-error"><span class="material-symbols-outlined text-[16px]" data-icon="delete">delete</span></button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-4 px-4 py-2 items-center hover:bg-surface-container-highest transition-colors group">
+<div class="col-span-4 font-body-sm text-body-sm font-medium">Node 4 Offline</div>
+<div class="col-span-6 font-code text-code text-tertiary-fixed-dim truncate">source_node = 'n-us-east-4' AND health = 'down'</div>
+<div class="col-span-2 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[16px]" data-icon="edit">edit</span></button>
+<button class="text-on-surface-variant hover:text-error"><span class="material-symbols-outlined text-[16px]" data-icon="delete">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Secondary Settings & Actions -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Notification Rules -->
+<section class="bg-surface-container-low border border-outline-variant rounded p-4 flex-1">
+<h2 class="font-title-md text-title-md text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="notifications_active">notifications_active</span>
+                                Notification Rules
+                            </h2>
+<div class="space-y-4">
+<!-- Rule Toggle 1 -->
+<div class="flex items-start justify-between gap-4">
+<div>
+<h3 class="font-body-sm text-body-sm font-medium">Pipeline Failures</h3>
+<p class="font-body-xs text-body-xs text-outline mt-1">Alert on severe pipeline blockages.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-outline-variant after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container border border-outline-variant"></div>
+</label>
+</div>
+<div class="w-full h-px bg-outline-variant/50"></div>
+<!-- Rule Toggle 2 -->
+<div class="flex items-start justify-between gap-4">
+<div>
+<h3 class="font-body-sm text-body-sm font-medium">Anomaly Detection</h3>
+<p class="font-body-xs text-body-xs text-outline mt-1">Receive signals when ML models flag unusual feedback patterns.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-outline-variant after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container border border-outline-variant"></div>
+</label>
+</div>
+<div class="w-full h-px bg-outline-variant/50"></div>
+<!-- Rule Toggle 3 -->
+<div class="flex items-start justify-between gap-4">
+<div>
+<h3 class="font-body-sm text-body-sm font-medium">Weekly Digest</h3>
+<p class="font-body-xs text-body-xs text-outline mt-1">Summary of feedback resolved and pending.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface-variant after:border-outline-variant after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container border border-outline-variant"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Action Bar (Sticky to bottom of container theoretically, but static here) -->
+<div class="bg-surface border border-outline-variant rounded p-4 flex flex-col gap-3">
+<button class="w-full h-row-height-standard bg-primary-container text-on-primary-container rounded flex items-center justify-center gap-2 hover:bg-primary transition-colors font-title-md text-title-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="save">save</span>
+                                Save Preferences
+                            </button>
+<button class="w-full h-row-height-standard bg-transparent border border-outline-variant text-on-surface rounded flex items-center justify-center gap-2 hover:bg-surface-variant hover:text-error transition-colors font-title-md text-title-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="restart_alt">restart_alt</span>
+                                Reset Defaults
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

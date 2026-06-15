@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RetrySignal Console - Pipeline Board</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed": "#001a42",
+                      "inverse-primary": "#005ac2",
+                      "secondary-fixed": "#6ffbbe",
+                      "surface-container-lowest": "#060e20",
+                      "outline": "#8c909f",
+                      "on-secondary-fixed-variant": "#005236",
+                      "on-secondary-container": "#00311f",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "error": "#ffb4ab",
+                      "on-background": "#dae2fd",
+                      "surface-variant": "#2d3449",
+                      "primary-fixed": "#d8e2ff",
+                      "surface-bright": "#31394d",
+                      "surface-container-highest": "#2d3449",
+                      "secondary-container": "#00a572",
+                      "primary": "#adc6ff",
+                      "on-tertiary-fixed": "#2a1700",
+                      "surface-container-high": "#222a3d",
+                      "on-secondary-fixed": "#002113",
+                      "tertiary": "#ffb95f",
+                      "on-error": "#690005",
+                      "surface-container": "#171f33",
+                      "on-primary": "#002e6a",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "primary-container": "#4d8eff",
+                      "error-container": "#93000a",
+                      "outline-variant": "#424754",
+                      "inverse-surface": "#dae2fd",
+                      "on-primary-container": "#00285d",
+                      "surface-container-low": "#131b2e",
+                      "background": "#0b1326",
+                      "primary-fixed-dim": "#adc6ff",
+                      "on-error-container": "#ffdad6",
+                      "on-surface": "#dae2fd",
+                      "secondary": "#4edea3",
+                      "surface-tint": "#adc6ff",
+                      "tertiary-container": "#ca8100",
+                      "on-secondary": "#003824",
+                      "on-surface-variant": "#c2c6d6",
+                      "inverse-on-surface": "#283044",
+                      "secondary-fixed-dim": "#4edea3",
+                      "surface": "#0b1326",
+                      "on-primary-fixed-variant": "#004395",
+                      "tertiary-fixed": "#ffddb8",
+                      "on-tertiary-container": "#3e2400",
+                      "on-tertiary": "#472a00",
+                      "surface-dim": "#0b1326"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "row-height-standard": "40px",
+                      "row-height-dense": "32px",
+                      "container-padding": "16px",
+                      "gutter": "12px"
+              },
+              "fontFamily": {
+                      "body-xs": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "code": [
+                              "JetBrains Mono"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "title-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-xs": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "code": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "title-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface font-body-sm h-screen overflow-hidden flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen flex flex-col docked h-full w-64 border-r border-outline-variant bg-surface-container-low dark:bg-surface-container-lowest z-20">
+<div class="p-container-padding flex-shrink-0">
+<h1 class="font-display text-display text-primary tracking-tight">RetrySignal</h1>
+<p class="font-body-xs text-body-xs text-on-surface-variant mt-1">System Operator</p>
+</div>
+<div class="px-container-padding py-2 mt-2 flex-shrink-0">
+<div class="bg-surface-container-high rounded p-2 flex items-center gap-2 border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-body-xs text-body-xs text-secondary">System Health: Optimal</span>
+</div>
+</div>
+<ul class="flex flex-col flex-grow mt-4 overflow-y-auto w-full">
+<li class="w-full">
+<a class="flex items-center px-container-padding py-2 text-on-surface-variant hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px]">analytics</span>
+<span class="font-title-md text-title-md">Feedback Operations</span>
+</a>
+</li>
+<li class="w-full">
+<a class="flex items-center px-container-padding py-2 text-primary font-bold border-r-2 border-primary bg-surface-container hover:bg-surface-variant transition-colors group active:opacity-80" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px]">alt_route</span>
+<span class="font-title-md text-title-md">Pipeline Board</span>
+</a>
+</li>
+<li class="w-full">
+<a class="flex items-center px-container-padding py-2 text-on-surface-variant hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px]">settings</span>
+<span class="font-title-md text-title-md">Settings</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto flex-shrink-0 pt-4 pb-container-padding w-full">
+<ul class="flex flex-col w-full border-t border-outline-variant pt-2">
+<li class="w-full">
+<a class="flex items-center px-container-padding py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px]">help</span>
+<span class="font-title-md text-title-md">Help</span>
+</a>
+</li>
+<li class="w-full">
+<a class="flex items-center px-container-padding py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px]">logout</span>
+<span class="font-title-md text-title-md">Logout</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex flex-col flex-1 ml-64 w-[calc(100%-256px)] h-screen overflow-hidden relative z-10 bg-surface">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-container-padding h-row-height-standard border-b border-outline-variant bg-surface dark:bg-surface flex-shrink-0">
+<div class="flex items-center gap-4">
+<h2 class="font-headline text-headline text-primary font-bold tracking-tight">RetrySignal Console</h2>
+<div class="hidden md:flex gap-4 border-l border-outline-variant pl-4 ml-2">
+<span class="font-code text-code text-secondary flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Bridge Status: Online</span>
+<span class="font-code text-code text-tertiary flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">speed</span> Latency: 24ms</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant">search</span>
+<input class="h-[28px] bg-surface-container-high border border-outline-variant rounded pl-8 pr-3 font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-colors" placeholder="Search pipelines..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-[28px] w-[28px] flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors rounded hover:bg-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+</button>
+<button class="h-[28px] w-[28px] flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors rounded hover:bg-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+<button class="h-[32px] px-3 bg-primary text-on-primary font-title-md text-title-md rounded flex items-center gap-1.5 hover:bg-primary-container hover:text-on-primary-container transition-colors active:scale-95 transition-transform shadow-[0_0_0_1px_rgba(255,255,255,0.1)_inset]">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">add</span>
+                    Create Request
+                </button>
+<div class="h-8 w-8 rounded bg-surface-container-highest border border-outline-variant overflow-hidden flex-shrink-0 cursor-pointer hover:border-primary transition-colors ml-2">
+<img alt="Operator Avatar" class="w-full h-full object-cover" data-alt="A small square avatar image of a system operator, featuring a professional headshot. The lighting is neutral and clear, suitable for a dark-mode technical dashboard. The subject has a serious, focused expression. The background of the avatar is a subtle, dark tech-inspired gradient." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3kiXy3uSe9BF80fKN2Tx3kGsgqPidt5bGSRQGmRIClFetQpn_PfYipi3x2K1KpQGv7dJUkCrJ6qv6xV3Ra2mvC2iiw5npwy6R_D14TwZGB0OfkZMofml0g8nIdPZJDQBge9gwEcFfr1NCc_noIVe6O9yCvPgAdXjqJ-6Xt3y-5hCP6rXXcLRYiZ0QWwiotN7wweNvtEG91HC9JHo7f3mMmUZJXIujaqcfq-TRJROYz9LBSZDh0EJZu9ymuyrUiJ9nHhoioIXhS8iT"/>
+</div>
+</div>
+</header>
+<!-- Pipeline Board Viewport -->
+<main class="flex-1 overflow-x-auto overflow-y-hidden p-container-padding bg-[#0f172a]">
+<div class="flex h-full gap-gutter min-w-[1200px]">
+<!-- Lane: Backlog -->
+<div class="flex flex-col w-[300px] flex-shrink-0 bg-[#1e293b] rounded border border-outline-variant flex-shrink-0 h-full overflow-hidden flex flex-col">
+<div class="h-row-height-standard flex items-center justify-between px-3 border-b border-outline-variant bg-surface-container-high flex-shrink-0">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider">Backlog</h3>
+<span class="bg-surface-container-highest text-on-surface-variant px-1.5 rounded font-code text-code text-[10px]">12</span>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">more_horiz</span></button>
+</div>
+<div class="flex-1 overflow-y-auto p-2 space-y-2 custom-scrollbar">
+<!-- Card 1 -->
+<div class="bg-surface rounded border border-outline-variant p-2 hover:bg-surface-container hover:border-outline cursor-grab active:cursor-grabbing group transition-all">
+<div class="flex justify-between items-start mb-1.5">
+<span class="font-code text-code text-primary opacity-80 text-[10px]">FB-8942</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">schedule</span>
+<span class="font-body-xs text-body-xs text-on-surface-variant text-[10px]">2m ago</span>
+</div>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-2 leading-tight">API Rate Limit Exceeded on Auth Service</h4>
+<div class="flex justify-between items-center mt-2 pt-2 border-t border-surface-container-high">
+<div class="flex gap-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps text-[9px] uppercase">API</span>
+</div>
+<span class="material-symbols-outlined text-[14px] text-outline-variant group-hover:text-outline cursor-grab">drag_indicator</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface rounded border border-outline-variant p-2 hover:bg-surface-container hover:border-outline cursor-grab active:cursor-grabbing group transition-all">
+<div class="flex justify-between items-start mb-1.5">
+<span class="font-code text-code text-primary opacity-80 text-[10px]">FB-8941</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">schedule</span>
+<span class="font-body-xs text-body-xs text-on-surface-variant text-[10px]">14m ago</span>
+</div>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-2 leading-tight">User reported blank screen on dashboard load</h4>
+<div class="flex justify-between items-center mt-2 pt-2 border-t border-surface-container-high">
+<div class="flex gap-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps text-[9px] uppercase">UI</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps text-[9px] uppercase">Crit</span>
+</div>
+<span class="material-symbols-outlined text-[14px] text-outline-variant group-hover:text-outline cursor-grab">drag_indicator</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Lane: In Recovery -->
+<div class="flex flex-col w-[300px] flex-shrink-0 bg-[#1e293b] rounded border border-outline-variant flex-shrink-0 h-full overflow-hidden flex flex-col">
+<div class="h-row-height-standard flex items-center justify-between px-3 border-b border-outline-variant bg-surface-container-high flex-shrink-0">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider">In Recovery</h3>
+<span class="bg-surface-container-highest text-on-surface-variant px-1.5 rounded font-code text-code text-[10px]">3</span>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">more_horiz</span></button>
+</div>
+<div class="flex-1 overflow-y-auto p-2 space-y-2 custom-scrollbar">
+<!-- Card 3 -->
+<div class="bg-surface rounded border border-outline-variant p-2 hover:bg-surface-container hover:border-outline cursor-grab active:cursor-grabbing group transition-all relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-tertiary"></div>
+<div class="pl-2">
+<div class="flex justify-between items-start mb-1.5">
+<span class="font-code text-code text-primary opacity-80 text-[10px]">FB-8938</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-tertiary">schedule</span>
+<span class="font-body-xs text-body-xs text-tertiary text-[10px]">1h ago</span>
+</div>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-2 leading-tight">Database connection pool exhaustion</h4>
+<div class="bg-surface-container-lowest p-1.5 rounded border border-surface-container-high mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-secondary animate-pulse">sync</span>
+<span class="font-code text-code text-[10px] text-on-surface-variant">Executing retry script v2.4</span>
+</div>
+<div class="flex justify-between items-center mt-2 pt-2 border-t border-surface-container-high">
+<div class="flex gap-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps text-[9px] uppercase">DB</span>
+</div>
+<button class="flex items-center gap-1 px-1.5 py-0.5 rounded border border-outline-variant text-[10px] text-on-surface-variant hover:border-primary hover:text-primary transition-colors">
+                                        Update <span class="material-symbols-outlined text-[12px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Lane: Supervisor Review -->
+<div class="flex flex-col w-[300px] flex-shrink-0 bg-[#1e293b] rounded border border-outline-variant flex-shrink-0 h-full overflow-hidden flex flex-col">
+<div class="h-row-height-standard flex items-center justify-between px-3 border-b border-outline-variant bg-surface-container-high flex-shrink-0">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider">Supervisor Review</h3>
+<span class="bg-surface-container-highest text-on-surface-variant px-1.5 rounded font-code text-code text-[10px]">1</span>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">more_horiz</span></button>
+</div>
+<div class="flex-1 overflow-y-auto p-2 space-y-2 custom-scrollbar">
+<!-- Card 4 -->
+<div class="bg-surface rounded border border-error p-2 hover:bg-surface-container cursor-grab active:cursor-grabbing group transition-all relative overflow-hidden shadow-[0_0_8px_rgba(255,180,171,0.1)]">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<div class="pl-2">
+<div class="flex justify-between items-start mb-1.5">
+<span class="font-code text-code text-primary opacity-80 text-[10px]">FB-8930</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-error">warning</span>
+<span class="font-body-xs text-body-xs text-error font-bold text-[10px]">3h ago</span>
+</div>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-2 leading-tight">Payment Gateway Timeout - Unhandled Exception</h4>
+<div class="bg-[#2a1700] border border-[#653e00] p-1.5 rounded mb-2 flex items-start gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-tertiary mt-0.5">priority_high</span>
+<span class="font-body-xs text-body-xs text-[10px] text-tertiary-fixed-dim leading-tight">Manual intervention required. Automated retry failed 3 times.</span>
+</div>
+<div class="flex justify-between items-center mt-2 pt-2 border-t border-surface-container-high">
+<div class="flex gap-1">
+<img alt="Supervisor Avatar" class="w-4 h-4 rounded-full border border-surface" data-alt="A very small circular avatar of a technical supervisor. The image shows a focused individual in a dark setting, suitable for a technical dashboard. The avatar is tiny, serving as a quick visual identifier in a dense UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqQ0whiJvy4jFVXKkHKGQ2TMSBjGnQXDMCaBqVgXoRL-FU7fObZN2dcsQUa6dJslQUHQGJnYlHTbWU06fib7qa_YgWQn-PTPJu_9CVeoJ9GZqtyGG8dQx0kY52dDLf3qBoy6GADsN4v6Sd5lAbXDrpvEnTBYZvLedRgKAAOEvTZv6TIDoCCfSeEwP1RlLAAQ8s38ola6JVHQdnl8UVzMJ3r0DOD8bWVcJam4lgBvpcW68yDEXpEm55IefxVE4lgQcxiEfSyPnkESCj"/>
+</div>
+<button class="flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container border border-outline-variant text-[10px] text-on-surface hover:border-primary hover:text-primary transition-colors">
+                                        Review <span class="material-symbols-outlined text-[12px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Lane: Final Gate -->
+<div class="flex flex-col w-[300px] flex-shrink-0 bg-[#1e293b] rounded border border-outline-variant flex-shrink-0 h-full overflow-hidden flex flex-col">
+<div class="h-row-height-standard flex items-center justify-between px-3 border-b border-outline-variant bg-surface-container-high flex-shrink-0">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider">Final Gate</h3>
+<span class="bg-surface-container-highest text-on-surface-variant px-1.5 rounded font-code text-code text-[10px]">5</span>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">more_horiz</span></button>
+</div>
+<div class="flex-1 overflow-y-auto p-2 space-y-2 custom-scrollbar">
+<!-- Card 5 -->
+<div class="bg-surface rounded border border-outline-variant p-2 hover:bg-surface-container hover:border-outline cursor-grab active:cursor-grabbing group transition-all relative overflow-hidden opacity-70 hover:opacity-100">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<div class="pl-2">
+<div class="flex justify-between items-start mb-1.5">
+<span class="font-code text-code text-primary opacity-80 text-[10px] line-through">FB-8925</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">check_circle</span>
+<span class="font-body-xs text-body-xs text-secondary text-[10px]">Resolved</span>
+</div>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-2 leading-tight">Sync Job Failure on Node 4</h4>
+<div class="flex justify-between items-center mt-2 pt-2 border-t border-surface-container-high">
+<div class="flex gap-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps text-[9px] uppercase">Infra</span>
+</div>
+<button class="flex items-center gap-1 px-1.5 py-0.5 rounded border border-outline-variant text-[10px] text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors">
+                                        Close <span class="material-symbols-outlined text-[12px]">done_all</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<style>
+        /* Minimal custom scrollbar for dense technical feel */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</body></html>

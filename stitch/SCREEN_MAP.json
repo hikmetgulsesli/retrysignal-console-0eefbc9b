@@ -1,0 +1,47 @@
+[
+  {
+    "screenId": "1fd5636a316c461490bce5895cefb491",
+    "name": "Feedback Editor - RetrySignal Console",
+    "type": "form",
+    "description": "Feedback Editor - RetrySignal Console screen",
+    "surfaceIds": [
+      "SURF_FEEDBACK_EDITOR"
+    ]
+  },
+  {
+    "screenId": "611a5866be7145bea863a2a50897f015",
+    "name": "Pipeline Board - RetrySignal Console",
+    "type": "app-screen",
+    "description": "Pipeline Board - RetrySignal Console screen",
+    "surfaceIds": [
+      "SURF_PIPELINE_BOARD"
+    ]
+  },
+  {
+    "screenId": "c7866f395ded4498b4e9a3ea5fd5414f",
+    "name": "Settings and Preferences - RetrySignal Console",
+    "type": "settings",
+    "description": "Settings and Preferences - RetrySignal Console screen",
+    "surfaceIds": [
+      "SURF_SETTINGS_AND_PREFERENCES"
+    ]
+  },
+  {
+    "screenId": "241c3c71799444208f56a4208a10fe23",
+    "name": "Feedback Operations - RetrySignal Console",
+    "type": "app-screen",
+    "description": "Feedback Operations - RetrySignal Console screen",
+    "surfaceIds": [
+      "SURF_FEEDBACK_OPERATIONS"
+    ]
+  },
+  {
+    "screenId": "40bd1e59272b4163bb94ebe7578c33e0",
+    "name": "Empty and Error Recovery - RetrySignal Console",
+    "type": "error",
+    "description": "Empty and Error Recovery - RetrySignal Console screen",
+    "surfaceIds": [
+      "SURF_EMPTY_AND_ERROR_RECOVERY"
+    ]
+  }
+]

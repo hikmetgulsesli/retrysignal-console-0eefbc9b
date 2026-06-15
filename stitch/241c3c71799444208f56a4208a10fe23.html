@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RetrySignal Console - Feedback Operations</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#001a42",
+                        "inverse-primary": "#005ac2",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-lowest": "#060e20",
+                        "outline": "#8c909f",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-secondary-container": "#00311f",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "error": "#ffb4ab",
+                        "on-background": "#dae2fd",
+                        "surface-variant": "#2d3449",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-bright": "#31394d",
+                        "surface-container-highest": "#2d3449",
+                        "secondary-container": "#00a572",
+                        "primary": "#adc6ff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-high": "#222a3d",
+                        "on-secondary-fixed": "#002113",
+                        "tertiary": "#ffb95f",
+                        "on-error": "#690005",
+                        "surface-container": "#171f33",
+                        "on-primary": "#002e6a",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "primary-container": "#4d8eff",
+                        "error-container": "#93000a",
+                        "outline-variant": "#424754",
+                        "inverse-surface": "#dae2fd",
+                        "on-primary-container": "#00285d",
+                        "surface-container-low": "#131b2e",
+                        "background": "#0b1326",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#dae2fd",
+                        "secondary": "#4edea3",
+                        "surface-tint": "#adc6ff",
+                        "tertiary-container": "#ca8100",
+                        "on-secondary": "#003824",
+                        "on-surface-variant": "#c2c6d6",
+                        "inverse-on-surface": "#283044",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface": "#0b1326",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-container": "#3e2400",
+                        "on-tertiary": "#472a00",
+                        "surface-dim": "#0b1326"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "row-height-standard": "40px",
+                        "row-height-dense": "32px",
+                        "container-padding": "16px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "body-xs": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "code": ["JetBrains Mono", "monospace"],
+                        "display": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-xs": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "code": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "display": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "title-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap');
+        
+        /* Custom scrollbar for dense tables */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.background');
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.surface-variant');
+            border-radius: theme('borderRadius.DEFAULT');
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline-variant');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-sm text-body-sm h-screen flex overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- JSON Component: SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen w-64 flex flex-col bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant z-20 shrink-0">
+<!-- Header -->
+<div class="p-container-padding border-b border-outline-variant flex items-center gap-gutter">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary-container flex items-center justify-center font-title-md text-title-md shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-display text-display text-primary truncate leading-tight">RetrySignal</span>
+<span class="font-body-xs text-body-xs text-on-surface-variant truncate">System Operator</span>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<div class="flex-1 py-4 flex flex-col gap-1 overflow-y-auto px-2">
+<!-- Active Navigation -->
+<a class="flex items-center px-3 h-row-height-standard text-primary font-bold border-r-2 border-primary bg-surface-variant/30 hover:bg-surface-variant transition-colors rounded-l" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]">analytics</span>
+<span class="font-title-md text-title-md truncate">Feedback Operations</span>
+</a>
+<!-- Inactive Navigation -->
+<a class="flex items-center px-3 h-row-height-standard text-on-surface-variant hover:bg-surface-variant transition-colors hover:text-on-surface rounded-l" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]">alt_route</span>
+<span class="font-title-md text-title-md truncate">Pipeline Board</span>
+</a>
+<a class="flex items-center px-3 h-row-height-standard text-on-surface-variant hover:bg-surface-variant transition-colors hover:text-on-surface rounded-l" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]">settings</span>
+<span class="font-title-md text-title-md truncate">Settings</span>
+</a>
+</div>
+<!-- Footer Tabs -->
+<div class="p-2 border-t border-outline-variant flex flex-col gap-1">
+<a class="flex items-center px-3 h-8 text-on-surface-variant hover:bg-surface-variant transition-colors rounded" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px]">help</span>
+<span class="font-body-sm text-body-sm">Help</span>
+</a>
+<a class="flex items-center px-3 h-8 text-on-surface-variant hover:bg-surface-variant transition-colors rounded" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px]">logout</span>
+<span class="font-body-sm text-body-sm">Logout</span>
+</a>
+<div class="mt-2 px-3 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary-fixed"></div>
+<span class="font-body-xs text-body-xs text-secondary-fixed">System Health: Optimal</span>
+</div>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-64 flex flex-col min-w-0 h-full relative">
+<!-- JSON Component: TopAppBar -->
+<header class="flex justify-between items-center w-full px-container-padding h-row-height-standard border-b border-outline-variant bg-surface shrink-0 z-10 shadow-sm">
+<!-- Left: Product Context / Status -->
+<div class="flex items-center gap-gutter font-title-md text-title-md text-on-surface">
+<span>RetrySignal Console</span>
+<span class="text-outline-variant">|</span>
+<span class="font-code text-code text-secondary-fixed flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">link</span> Bridge Status: Online</span>
+<span class="font-code text-code text-on-surface-variant ml-4 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">timer</span> Latency: 24ms</span>
+</div>
+<!-- Right: Actions -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="text-on-surface-variant hover:text-primary hover:bg-surface-variant w-8 h-8 rounded flex items-center justify-center transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary hover:bg-surface-variant w-8 h-8 rounded flex items-center justify-center transition-colors" title="History">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</button>
+</div>
+<div class="h-6 w-px bg-outline-variant"></div>
+<button class="h-8 px-4 bg-primary text-on-primary rounded flex items-center gap-2 font-title-md text-title-md hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">add</span>
+                    Create Request
+                </button>
+<img alt="Operator Avatar" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A small circular avatar placeholder image showing the initials SO in a minimalist, tech-focused dark mode aesthetic with blue tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbVjKUV4bEc_V-m-VUpwJyWxJxqF_es-PLmITPv_w2glLqIYR3erKB2zOc17kr3nYviqSylczvIPUIvkERoFlfP929i3WV-BI6Jy1fPgu4lEjVmiT1gnKpBzabbiR877WfK8WHfbiiz8wyTzxNeqP3m_jbdWhrx-yaXuUoQK5XVYfzmQlF_vjZXF3iy_MvcmBWSGb6mhFHfiJ-uZ4eri2FvtuNePmU3ldPCTV3Qz74ALm4BLfkxMjKQYgbH3mCDRa-4sMdhagFLaJ9"/>
+</div>
+</header>
+<!-- Dynamic Operation Area -->
+<main class="flex-1 flex overflow-hidden bg-background relative">
+<!-- Primary Canvas (Metrics + Table) -->
+<div class="flex-1 flex flex-col p-container-padding gap-4 overflow-y-auto">
+<!-- Metrics Bar -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 shrink-0">
+<div class="bg-surface-container border border-outline-variant rounded p-4 flex flex-col gap-1 relative overflow-hidden">
+<div class="absolute right-0 top-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-[48px]">all_inbox</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Total Operations</span>
+<span class="font-display text-display text-on-surface">1,248</span>
+<span class="font-body-xs text-body-xs text-secondary-fixed flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-[12px]">trending_up</span> +12% from last hour</span>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded p-4 flex flex-col gap-1 relative overflow-hidden">
+<div class="absolute -left-12 -top-12 opacity-5">
+
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Active PR Reviews</span>
+<span class="font-display text-display text-primary">84</span>
+<span class="font-body-xs text-body-xs text-on-surface-variant flex items-center gap-1 mt-1">Pending approval</span>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded p-4 flex flex-col gap-1 relative overflow-hidden border-l-2 border-l-tertiary">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Retrying</span>
+<span class="font-display text-display text-tertiary">12</span>
+<span class="font-body-xs text-body-xs text-tertiary-fixed-dim flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-[12px]">sync</span> Background processes</span>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded p-4 flex flex-col gap-1 relative overflow-hidden border-l-2 border-l-error">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Gate Failures</span>
+<span class="font-display text-display text-error">3</span>
+<span class="font-body-xs text-body-xs text-error-container flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-[12px]">block</span> Manual intervention required</span>
+</div>
+</div>
+<!-- Controls Row -->
+<div class="flex justify-between items-center bg-surface-container-low p-2 rounded border border-outline-variant shrink-0">
+<div class="flex items-center gap-2 w-1/3">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-2 top-1.5 text-[16px] text-on-surface-variant">search</span>
+<input class="w-full bg-background border border-outline-variant rounded h-8 pl-8 pr-3 font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder:text-on-surface-variant/50" placeholder="Search ID, Title, or Owner..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-8 px-3 flex items-center gap-2 border border-outline-variant rounded bg-surface text-on-surface hover:bg-surface-variant transition-colors font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> Status: All
+                        </button>
+<button class="h-8 px-3 flex items-center gap-2 border border-outline-variant rounded bg-surface text-on-surface hover:bg-surface-variant transition-colors font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> Last 24h
+                        </button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded bg-surface text-on-surface hover:bg-surface-variant transition-colors" title="Export CSV">
+<span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="flex-1 bg-surface-container border border-outline-variant rounded overflow-hidden flex flex-col min-h-0">
+<div class="overflow-y-auto flex-1 relative">
+<table class="w-full text-left border-collapse whitespace-nowrap">
+<thead class="bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps uppercase sticky top-0 z-10 shadow-sm shadow-background/50">
+<tr>
+<th class="px-4 py-2 border-b border-outline-variant w-12 font-medium">ID</th>
+<th class="px-4 py-2 border-b border-outline-variant font-medium">Title / Context</th>
+<th class="px-4 py-2 border-b border-outline-variant w-32 font-medium">Status</th>
+<th class="px-4 py-2 border-b border-outline-variant w-40 font-medium">Owner</th>
+<th class="px-4 py-2 border-b border-outline-variant w-24 font-medium">Aging</th>
+<th class="px-4 py-2 border-b border-outline-variant w-16 text-right font-medium">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface">
+<!-- Row: Active -->
+<tr class="h-row-height-dense border-b border-outline-variant hover:bg-surface-variant/50 transition-colors cursor-pointer group">
+<td class="px-4 py-1 font-code text-code text-on-surface-variant">FB-9042</td>
+<td class="px-4 py-1 truncate max-w-[200px]" title="Optimize payload size for user metrics endpoint">Optimize payload size for user metrics endpoint</td>
+<td class="px-4 py-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-container/20 text-secondary-fixed border border-secondary-container/50 font-label-caps text-label-caps gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span> Active
+                                        </span>
+</td>
+<td class="px-4 py-1 flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-[10px]">JD</div>
+<span>J. Doe</span>
+</td>
+<td class="px-4 py-1 text-on-surface-variant">2h 14m</td>
+<td class="px-4 py-1 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row: Retrying (Selected State) -->
+<tr class="h-row-height-dense border-b border-outline-variant bg-primary-container/10 border-l-2 border-l-primary hover:bg-primary-container/20 transition-colors cursor-pointer group relative">
+<td class="px-4 py-1 font-code text-code text-primary">FB-9041</td>
+<td class="px-4 py-1 truncate max-w-[200px] text-on-surface font-medium" title="Database connection pool timeout during migration">Database connection pool timeout during migration</td>
+<td class="px-4 py-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary-fixed-dim border border-tertiary-container/50 font-label-caps text-label-caps gap-1">
+<span class="material-symbols-outlined text-[10px] animate-spin">sync</span> Retrying
+                                        </span>
+</td>
+<td class="px-4 py-1 flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-surface-variant text-on-surface flex items-center justify-center font-bold text-[10px]">sys</div>
+<span>Automated</span>
+</td>
+<td class="px-4 py-1 text-tertiary">4m</td>
+<td class="px-4 py-1 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row: Gate Failure -->
+<tr class="h-row-height-dense border-b border-outline-variant hover:bg-surface-variant/50 transition-colors cursor-pointer group">
+<td class="px-4 py-1 font-code text-code text-on-surface-variant">FB-9038</td>
+<td class="px-4 py-1 truncate max-w-[200px]" title="Schema validation failed on deployment target C">Schema validation failed on deployment target C</td>
+<td class="px-4 py-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-error-container/20 text-error border border-error-container/50 font-label-caps text-label-caps gap-1">
+<span class="material-symbols-outlined text-[10px]">close</span> Gate Failure
+                                        </span>
+</td>
+<td class="px-4 py-1 flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-surface-variant text-on-surface flex items-center justify-center font-bold text-[10px]">MK</div>
+<span>M. Kane</span>
+</td>
+<td class="px-4 py-1 text-on-surface-variant">1d 4h</td>
+<td class="px-4 py-1 text-right flex justify-end gap-2">
+<button class="h-6 px-2 border border-outline-variant rounded text-[11px] font-title-md hover:bg-surface-variant transition-colors opacity-0 group-hover:opacity-100 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">restart_alt</span> Retry
+                                        </button>
+</td>
+</tr>
+<!-- Standard Rows -->
+<tr class="h-row-height-dense border-b border-outline-variant hover:bg-surface-variant/50 transition-colors cursor-pointer group">
+<td class="px-4 py-1 font-code text-code text-on-surface-variant">FB-9035</td>
+<td class="px-4 py-1 truncate max-w-[200px]">Update ingress rules for regional cluster</td>
+<td class="px-4 py-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-container/20 text-secondary-fixed border border-secondary-container/50 font-label-caps text-label-caps gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span> Active
+                                        </span>
+</td>
+<td class="px-4 py-1 flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-[10px]">JD</div>
+<span>J. Doe</span>
+</td>
+<td class="px-4 py-1 text-on-surface-variant">1d 8h</td>
+<td class="px-4 py-1 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</td>
+</tr>
+<tr class="h-row-height-dense border-b border-outline-variant hover:bg-surface-variant/50 transition-colors cursor-pointer group">
+<td class="px-4 py-1 font-code text-code text-on-surface-variant">FB-9034</td>
+<td class="px-4 py-1 truncate max-w-[200px]">Memory leak in worker thread processing</td>
+<td class="px-4 py-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant border border-outline-variant font-label-caps text-label-caps gap-1">
+<span class="material-symbols-outlined text-[10px]">done</span> Resolved
+                                        </span>
+</td>
+<td class="px-4 py-1 flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-surface-variant text-on-surface flex items-center justify-center font-bold text-[10px]">AL</div>
+<span>A. Lovelace</span>
+</td>
+<td class="px-4 py-1 text-on-surface-variant">2d 1h</td>
+<td class="px-4 py-1 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Side Drawer (Selected Item Preview) -->
+<div class="w-96 border-l border-outline-variant bg-surface-container-low flex flex-col shrink-0 shadow-lg z-10 transition-transform transform translate-x-0">
+<!-- Drawer Header -->
+<div class="p-4 border-b border-outline-variant flex justify-between items-start bg-surface-container">
+<div class="flex flex-col gap-1 pr-4">
+<div class="flex items-center gap-2">
+<span class="font-code text-code text-primary font-bold">FB-9041</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary-fixed-dim border border-tertiary-container/50 font-label-caps text-label-caps gap-1">
+<span class="material-symbols-outlined text-[10px] animate-spin">sync</span> Retrying
+                            </span>
+</div>
+<h2 class="font-title-md text-title-md text-on-surface leading-tight mt-1">Database connection pool timeout during migration</h2>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors shrink-0 p-1 rounded hover:bg-surface-variant">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Drawer Body -->
+<div class="flex-1 overflow-y-auto p-4 space-y-6">
+<!-- Meta Info Grid -->
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 font-body-sm text-body-sm">
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-caps text-label-caps uppercase">Owner</span>
+<span class="text-on-surface flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-[14px]">smart_toy</span> Automated
+                            </span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-caps text-label-caps uppercase">Target</span>
+<span class="font-code text-code text-on-surface mt-1">db-cluster-us-east</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-caps text-label-caps uppercase">Started</span>
+<span class="text-on-surface mt-1">2023-10-27 14:32:01 UTC</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-caps text-label-caps uppercase">Retry Count</span>
+<span class="text-on-surface mt-1">3 / 5 max</span>
+</div>
+</div>
+<div class="h-px w-full bg-outline-variant/50"></div>
+<!-- Log Output Box -->
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase flex items-center justify-between">
+                            Latest Operational Log
+                            <button class="text-primary hover:underline lowercase font-body-xs">copy</button>
+</span>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-3 font-code text-code text-on-surface-variant overflow-x-auto relative">
+<div class="absolute inset-0 pointer-events-none border border-outline-variant/20 rounded"></div>
+<pre class="whitespace-pre-wrap"><span class="text-outline">01</span> [INFO] Initiating migration script v1.4.2
+<span class="text-outline">02</span> [INFO] Connecting to db-cluster-us-east...
+<span class="text-outline">03</span> <span class="text-error">[WARN] Connection attempt 1 failed: timeout (3000ms)</span>
+<span class="text-outline">04</span> [INFO] Backoff triggered. Waiting 5000ms.
+<span class="text-outline">05</span> [INFO] Re-attempting connection...
+<span class="text-outline">06</span> <span class="text-error">[WARN] Connection attempt 2 failed: timeout (3000ms)</span>
+<span class="text-outline">07</span> [SYS] Escalating to RETRYING state.</pre>
+</div>
+</div>
+<!-- Recovery Path Strategy -->
+<div class="bg-surface border border-outline-variant rounded p-3 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[64px]">alt_route</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary uppercase">Suggested Recovery Path</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">The connection pool appears exhausted. A forced restart of the proxy service usually resolves this transient state without data loss.</p>
+</div>
+</div>
+<!-- Drawer Footer Actions -->
+<div class="p-4 border-t border-outline-variant bg-surface flex justify-end gap-3 shrink-0">
+<button class="h-8 px-4 border border-outline-variant rounded text-on-surface font-title-md text-title-md hover:bg-surface-variant transition-colors">
+                        Cancel Task
+                    </button>
+<button class="h-8 px-4 border border-primary text-primary rounded font-title-md text-title-md flex items-center gap-2 hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span> Retry Load
+                    </button>
+</div>
+</div>
+</main>
+</div>
+</body></html>
